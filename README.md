@@ -14,6 +14,15 @@ Add the following line to your package's `analysis_options.yaml` file:
 include: package:okmsbun_flutter/okmsbun_flutter_lints.yaml
 ```
 
+And the following line to your package's `pubspec.yaml` file:
+
+```yaml
+....
+dependencies:
+  flutter_lints: ^3.0.1
+....
+```
+
 ### ImageWidget
 
 ImageWigdet was made using the 'https://pub.dev/packages/cached_network_image' and 'https://pub.dev/packages/flutter_svg' packages.
