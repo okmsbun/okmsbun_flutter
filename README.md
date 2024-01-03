@@ -68,9 +68,11 @@ BufferingFutureBuilder<String>(
   )
 ```
 
-### **numDurationExtension**
+### **Extensions**
 
-numDurationExtension is an extension that helps you to easily use Duration.
+#### **NumDurationExtension**
+
+NumDurationExtension is an extension that helps you to easily use Duration.
 This extension is inspired by the [flutter_animate](https://github.com/gskinner/flutter_animate/blob/main/lib/src/extensions/num_duration_extensions.dart) package.
 
 ```dart
@@ -81,4 +83,28 @@ This extension is inspired by the [flutter_animate](https://github.com/gskinner/
   Duration 1Minute = 1.minutes;
   Duration 1Hour = 1.hours;
   Duration 1Day = 1.days;
+```
+
+#### **ContextThemeExtension**
+
+ContextThemeExtension is an extension that helps you to easily use ThemeData, TextTheme, and ColorScheme.
+
+```dart
+  context.themeData;
+  context.textTheme;
+  context.colorScheme;
+```
+
+#### **ContextMediaQueryExtension**
+
+ContextMediaQueryExtension is an extension that helps you to easily use MediaQuery.
+
+```dart
+  context.mediaQuery;
+  context.size;
+  context.width;
+  context.height;
+  context.padding;
+  context.brightness;
+  context.orientation;
 ```
