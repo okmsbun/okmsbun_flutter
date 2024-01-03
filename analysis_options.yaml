@@ -1,1 +1,1 @@
-include: okmsbun_flutter_lints.yaml
+include: package:okmsbun_flutter/okmsbun_flutter_lints.yaml
