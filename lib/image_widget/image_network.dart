@@ -1,0 +1,79 @@
+part of 'image_widget.dart';
+
+class _ImageNetworkWidget extends StatelessWidget {
+  const _ImageNetworkWidget({
+    required this.imageUrl,
+    required this.imageType,
+    required this.boxFit,
+    required this.httpHeaders,
+    required this.placeholderBuilder,
+    required this.defaultPlaceholder,
+    required this.errorBuilder,
+    required this.defaultErrorWidget,
+    required this.height,
+    required this.width,
+    required this.fadeInDuration,
+    required this.fadeOutDuration,
+    required this.fadeInCurve,
+    required this.fadeOutCurve,
+    required this.color,
+  });
+
+  final String imageUrl;
+  final ImageType imageType;
+  final BoxFit boxFit;
+  final Map<String, String>? httpHeaders;
+  final Widget Function(BuildContext)? placeholderBuilder;
+  final Widget? defaultPlaceholder;
+  final Widget Function(BuildContext)? errorBuilder;
+  final Widget? defaultErrorWidget;
+  final double? height;
+  final double? width;
+  final Duration fadeInDuration;
+  final Duration fadeOutDuration;
+  final Curve fadeInCurve;
+  final Curve fadeOutCurve;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (imageType) {
+      case ImageType.svg:
+        return SvgPicture.network(
+          //?: implement errorBuilder
+          //?: implement fade in and fade out duration
+          //?: implement fade in and fade out curve
+          imageUrl,
+          fit: boxFit,
+          headers: httpHeaders,
+          placeholderBuilder: placeholderBuilder ??
+              (defaultPlaceholder != null ? (_) => defaultPlaceholder! : null),
+          height: height,
+          width: width,
+          colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+        );
+      case ImageType.other:
+        return CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: boxFit,
+          httpHeaders: httpHeaders,
+          placeholder: placeholderBuilder != null
+              ? (context, __) => placeholderBuilder!(context)
+              : defaultPlaceholder != null
+                  ? (_, __) => defaultPlaceholder!
+                  : null,
+          errorWidget: errorBuilder != null
+              ? (context, __, ___) => errorBuilder!(context)
+              : defaultErrorWidget != null
+                  ? (_, __, ___) => defaultErrorWidget!
+                  : null,
+          height: height,
+          width: width,
+          fadeInDuration: fadeInDuration,
+          fadeOutDuration: fadeOutDuration,
+          fadeInCurve: fadeInCurve,
+          fadeOutCurve: fadeOutCurve,
+        );
+    }
+  }
+}
