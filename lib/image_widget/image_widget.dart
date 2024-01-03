@@ -164,6 +164,7 @@ final class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageAddress?.isEmpty ?? false) return const SizedBox.shrink();
+    // TODO: "cached_network_image" does not support all platforms. Check it.
 
     switch (imageOrigin) {
       case ImageOrigin.network:
