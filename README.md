@@ -4,7 +4,7 @@ This package is a utility package designed to eliminate boilerplate code and fac
 
 ## Usage
 
-### Adding Lint Rules
+### **Adding Lint Rules**
 
 If you want stricter, more precise, and clear lint rules, you can include the following lint rules. You can access all of these lint rules [here](https://dart.dev/tools/linter-rules/all).
 
@@ -23,9 +23,9 @@ dependencies:
 ....
 ```
 
-### ImageWidget
+### **ImageWidget**
 
-ImageWigdet was made using the 'https://pub.dev/packages/cached_network_image' and 'https://pub.dev/packages/flutter_svg' packages.
+ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/cached_network_image) and [flutter_svg](https://pub.dev/packages/flutter_svg) packages.
 
 'Image Widget' is a widget that aims to display images with extensions such as svg and other (jpg, png ...) from a single widget.
 
@@ -34,22 +34,22 @@ ImageWigdet was made using the 'https://pub.dev/packages/cached_network_image' a
         imageUrl: 'https://picsum.photos/200/300',
         boxFit: BoxFit.cover,
         height: 300,
-        width: 200,
-      ),
+        ...
+      )
 
     ImageWidget.asset(
         assetPath: 'assets/images/placeholder.png',
         boxFit: BoxFit.cover,
         height: 300,
-        width: 200,
-      ),
+        ...
+      )
 
     ImageWidget.bytes(
         bytes: bytes,
         boxFit: BoxFit.cover,
         height: 300,
-        width: 200,
-      ),
+        ...
+      )
 ```
 
 #### ImageWidget parameters
