@@ -52,49 +52,6 @@ ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/c
       )
 ```
 
-<!-- import 'package:flutter/material.dart';
-
-class BufferingFutureBuilder<T> extends StatelessWidget {
-  const BufferingFutureBuilder({
-    required this.future,
-    this.progress = const CircularProgressIndicator(),
-    this.errorWidget = const Icon(Icons.error),
-    this.notFoundWidget = const Icon(Icons.not_interested),
-    required this.builder,
-    this.onLoadedData,
-  });
-
-  final Future<T> Function() future;
-  final Widget progress;
-  final Widget errorWidget;
-  final Widget notFoundWidget;
-  final Widget Function(T? data) builder;
-  final T? onLoadedData;
-
-  Future<T> get _futureFunction => future();
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<T>(
-      future: _futureFunction,
-      builder: (context, snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return onLoadedData == null ? progress : builder(onLoadedData);
-          case ConnectionState.done:
-            if (snapshot.hasError) return errorWidget;
-            if (snapshot.hasData) return builder(snapshot.data);
-            return notFoundWidget;
-          case ConnectionState.none:
-            return errorWidget;
-          case ConnectionState.active:
-            return errorWidget;
-        }
-      },
-    );
-  }
-} -->
-
 ### **BufferingFutureBuilder**
 
 BufferingFutureBuilder is a widget that helps show old data instead of progress when a new request is made or data changes while using FutureBuilder.
@@ -107,5 +64,21 @@ BufferingFutureBuilder<String>(
     },
     builder: (data) => Text(data ?? ''),
     onLoadedData: 'Hello World from onLoadedData',
+    ...
   )
+```
+
+### **numDurationExtension**
+
+numDurationExtension is an extension that helps you to easily use Duration.
+This extension is inspired by the [flutter_animate](https://github.com/gskinner/flutter_animate/blob/main/lib/src/extensions/num_duration_extensions.dart) package.
+
+```dart
+  Duration 1Microseconds = 1.microseconds;
+  Duration 1Ms = 1.ms;
+  Duration 1Milliseconds = 1.milliseconds;
+  Duration 1Second = 1.seconds;
+  Duration 1Minute = 1.minutes;
+  Duration 1Hour = 1.hours;
+  Duration 1Day = 1.days;
 ```
