@@ -52,20 +52,60 @@ ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/c
       )
 ```
 
-#### ImageWidget parameters
+<!-- import 'package:flutter/material.dart';
 
-| Parameter          | Type                          | Description         | Default                     |
-| :----------------- | :---------------------------- | :------------------ | :-------------------------- |
-| imageAddress       | String                        | Image address       | null                        |
-| boxFit             | BoxFit                        | Image fit           | BoxFit.cover                |
-| httpHeaders        | Map<String, String>           | Http headers        | null                        |
-| placeholderBuilder | Widget Function(BuildContext) | Placeholder builder | null                        |
-| height             | double                        | Image height        | null                        |
-| width              | double                        | Image width         | null                        |
-| bytes              | Uint8List                     | Image bytes         | null                        |
-| errorBuilder       | Widget Function(BuildContext) | Error builder       | null                        |
-| fadeInDuration     | Duration                      | Fade in duration    | Duration(milliseconds: 500) |
-| fadeOutDuration    | Duration                      | Fade out duration   | Duration(milliseconds: 500) |
-| fadeInCurve        | Curve                         | Fade in curve       | Curves.easeIn               |
-| fadeOutCurve       | Curve                         | Fade out curve      | Curves.easeOut              |
-| color              | Color                         | Image color         | null                        |
+class BufferingFutureBuilder<T> extends StatelessWidget {
+  const BufferingFutureBuilder({
+    required this.future,
+    this.progress = const CircularProgressIndicator(),
+    this.errorWidget = const Icon(Icons.error),
+    this.notFoundWidget = const Icon(Icons.not_interested),
+    required this.builder,
+    this.onLoadedData,
+  });
+
+  final Future<T> Function() future;
+  final Widget progress;
+  final Widget errorWidget;
+  final Widget notFoundWidget;
+  final Widget Function(T? data) builder;
+  final T? onLoadedData;
+
+  Future<T> get _futureFunction => future();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<T>(
+      future: _futureFunction,
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return onLoadedData == null ? progress : builder(onLoadedData);
+          case ConnectionState.done:
+            if (snapshot.hasError) return errorWidget;
+            if (snapshot.hasData) return builder(snapshot.data);
+            return notFoundWidget;
+          case ConnectionState.none:
+            return errorWidget;
+          case ConnectionState.active:
+            return errorWidget;
+        }
+      },
+    );
+  }
+} -->
+
+### **BufferingFutureBuilder**
+
+BufferingFutureBuilder is a widget that helps show old data instead of progress when a new request is made or data changes while using FutureBuilder.
+
+```dart
+BufferingFutureBuilder<String>(
+    future: () async {
+      await Future.delayed(const Duration(seconds: 3));
+      return 'Hello World from Future';
+    },
+    builder: (data) => Text(data ?? ''),
+    onLoadedData: 'Hello World from onLoadedData',
+  )
+```
