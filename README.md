@@ -117,3 +117,70 @@ ContextMediaQueryExtension is an extension that helps you to easily use MediaQue
   final Brightness brightness = context.brightness;
   final Orientation orientation = context.orientation;
 ```
+
+### **DioResponseExtension**
+
+DioResponseExtension converts dioResponse into Map in detail.
+
+```dart
+final Response response = await Dio().get('https://pokeapi.co/api/v2/pokemon?limit=1');
+final Map<String, dynamic> responseMap = response.toMap;
+final String responseEncode = jsonEncode(responseMap);
+print(responseEncode);
+```
+
+The output of the above code is as follows
+
+```json
+{
+  "data": {
+    "count": 1302,
+    "next": "https://pokeapi.co/api/v2/pokemon?offset=1&limit=1",
+    "previous": null,
+    "results": [
+      {
+        "name": "bulbasaur",
+        "url": "https://pokeapi.co/api/v2/pokemon/1/"
+      }
+    ]
+  },
+  "requestOptions": {
+    "method": "GET",
+    "sendTimeout": null,
+    "receiveTimeout": null,
+    "connectTimeout": null,
+    "data": null,
+    "path": "https://pokeapi.co/api/v2/pokemon?limit=1",
+    "baseUrl": "",
+    "queryParameters": {},
+    "onReceiveProgress": null,
+    "onSendProgress": null,
+    "cancelToken": null,
+    "extra": {},
+    "headers": {},
+    "preserveHeaderCase": false,
+    "responseType": "json",
+    "receiveDataWhenStatusError": true,
+    "followRedirects": true,
+    "maxRedirects": 5,
+    "persistentConnection": true,
+    "requestEncoder": null,
+    "responseDecoder": null,
+    "listFormat": "multi"
+  },
+  "statusCode": 200,
+  "statusMessage": "OK",
+  "isRedirect": false,
+  "redirects": [],
+  "extra": {},
+  "headers": {
+    "preserveHeaderCase": false,
+    "map": {
+      "x-timer": ["S1703133027.794235,VS0,VE1"],
+      "date": ["Thu, 04 Jan 2024 11:07:34 GMT"],
+      "content-encoding": ["gzip"],
+      ...
+    }
+  }
+}
+```
