@@ -47,7 +47,7 @@ ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/c
       )
 
     ImageWidget.asset(
-        assetPath: 'assets/images/placeholder.png',
+        assetPath: 'assets/images/placeholder.(svg|jpg|png)',
         boxFit: BoxFit.cover,
         height: 300,
         ...

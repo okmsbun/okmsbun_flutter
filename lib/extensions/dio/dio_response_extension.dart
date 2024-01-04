@@ -29,15 +29,15 @@ extension RequestOptionExtension on RequestOptions {
         'extra': extra,
         'headers': headers,
         'preserveHeaderCase': preserveHeaderCase,
-        'responseType': responseType,
-        'validateStatus': validateStatus,
+        'responseType': responseType.name,
+        'validateStatus': validateStatus.toString(),
         'receiveDataWhenStatusError': receiveDataWhenStatusError,
         'followRedirects': followRedirects,
         'maxRedirects': maxRedirects,
         'persistentConnection': persistentConnection,
         'requestEncoder': requestEncoder,
         'responseDecoder': responseDecoder,
-        'listFormat': listFormat,
+        'listFormat': listFormat.name,
       };
 }
 

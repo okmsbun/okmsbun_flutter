@@ -1,6 +1,6 @@
 name: okmsbun_flutter
 description: "Package util package that aims to get rid of boilerplate to start the project quickly"
-version: 0.0.8
+version: 0.0.9
 repository: https://github.com/okmsbun/okmsbun_flutter
 
 environment:
