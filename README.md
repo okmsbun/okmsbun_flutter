@@ -1,5 +1,21 @@
 This package is a utility package designed to eliminate boilerplate code and facilitate a quick project setup.
 
+# **Table of Contents**
+
+- [**Getting Started**](#getting-started)
+- [**Usage**](#usage)
+  - [**Adding Lint Rules**](#adding-lint-rules)
+  - [**ImageWidget**](#imagewidget)
+  - [**BufferingFutureBuilder**](#bufferingfuturebuilder)
+  - [**EstimatedAppBar**](#estimatedappbar)
+    - [**EstimatedAppBar**](#estimatedappbar-1)
+    - [**EstimatedAppBarContainer**](#estimatedappbarcontainer)
+  - [**Extensions**](#extensions)
+    - [**DioExtension**](#dioextension)
+    - [**NumDurationExtension**](#numdurationextension)
+    - [**ContextThemeExtension**](#contextthemeextension)
+    - [**ContextMediaQueryExtension**](#contextmediaqueryextension)
+
 # **Getting Started**
 
 Add the following line to your package's `pubspec.yaml` file:
@@ -40,14 +56,14 @@ ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/c
 
 ```dart
     ImageWidget.network(
-        imageUrl: 'https://picsum.photos/200/300',
+        imageUrl: 'https://network-image.(svg|jpg|png...)',
         boxFit: BoxFit.cover,
         height: 300,
         ...
       )
 
     ImageWidget.asset(
-        assetPath: 'assets/images/placeholder.(svg|jpg|png)',
+        assetPath: 'assets/image.(svg|jpg|png...)',
         boxFit: BoxFit.cover,
         height: 300,
         ...
@@ -63,7 +79,7 @@ ImageWigdet was made using the [cached_network_image](https://pub.dev/packages/c
 
 ## **BufferingFutureBuilder**
 
-BufferingFutureBuilder is a widget that helps show old data instead of progress when a new request is made or data changes while using FutureBuilder.
+BufferingFutureBuilder is a widget that helps show old data instead of progress when a new request is made or data changes while using FutureBuilder. As soon as new data arrives, it replaces old data with new data.
 
 ```dart
 BufferingFutureBuilder<String>(
@@ -77,50 +93,56 @@ BufferingFutureBuilder<String>(
   )
 ```
 
+## **EstimatedAppBar**
+
+### **EstimatedAppBar**
+
+This widget returns an empty appBar, which only has a background color and no other properties, and consists of an empty container that you can edit as you wish. This appBar automatically corrects the 'statusBarColor', 'statusBarBrightness', 'statusBarIconBrightness', 'systemStatusBarContrastEnforced' values. In this way, it aims to ensure the readability of the texts and icons in the status bar.
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: EstimatedAppBar(
+        backgroundColor: Colors.black || Colors.white,
+        child: Container(
+          color: Colors.black,
+          child: const FlutterLogo(size: 50),
+        ),
+      ),
+    );
+  }
+```
+
+### **EstimatedAppBarContainer**
+
+'EstimatedAppBar' is a 'PreferredSizeWidget'. If you want to make your own 'PreferredSizeWidget' you can use 'EstimatedAppBarContainer'.
+
+```dart
+class MyEstimatedAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyEstimatedAppBar({required this.backgroundColor, required this.child});
+
+  final Color backgroundColor;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return EstimatedAppBarContainer(
+      backgroundColor: backgroundColor,
+      child: child,
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+```
+
 ## **Extensions**
 
-### **NumDurationExtension**
+### **DioExtension**
 
-NumDurationExtension is an extension that helps you to easily use Duration.
-This extension is inspired by the [flutter_animate](https://github.com/gskinner/flutter_animate/blob/main/lib/src/extensions/num_duration_extensions.dart) package.
-
-```dart
-  final Duration 1Microseconds = 1.microseconds;
-  final Duration 1Ms = 1.ms;
-  final Duration 1Milliseconds = 1.milliseconds;
-  final Duration 1Second = 1.seconds;
-  final Duration 1Minute = 1.minutes;
-  final Duration 1Hour = 1.hours;
-  final Duration 1Day = 1.days;
-```
-
-### **ContextThemeExtension**
-
-ContextThemeExtension is an extension that helps you to easily use ThemeData, TextTheme, and ColorScheme.
-
-```dart
-  final ThemeData theme = context.theme;
-  final TextTheme textTheme = context.textTheme;
-  final ColorScheme colorScheme = context.colorScheme;
-```
-
-### **ContextMediaQueryExtension**
-
-ContextMediaQueryExtension is an extension that helps you to easily use MediaQuery.
-
-```dart
-  final MediaQueryData mediaQuery = context.mediaQuery;
-  final Size appSize = context.appSize;
-  final double width = context.width;
-  final double height = context.height;
-  final EdgeInsets padding = context.padding;
-  final Brightness brightness = context.brightness;
-  final Orientation orientation = context.orientation;
-```
-
-### **DioResponseExtension**
-
-DioResponseExtension converts dioResponse into Map in detail.
+DioResponseExtension converts dioResponse object into Map in detail.Just do 'response.**toMap**'.
 
 ```dart
 final Response response = await Dio().get('https://pokeapi.co/api/v2/pokemon?limit=1');
@@ -183,4 +205,55 @@ The output of the above code is as follows
     }
   }
 }
+```
+
+You can also convert the 'DioException' object to 'Map' in the same way.
+
+```dart
+...
+} on DioException catch (e) {
+  print(jsonEncode(e.toMap));
+} catch (e) {
+...
+```
+
+It will give the same detailed output as the response object above.
+
+### **NumDurationExtension**
+
+NumDurationExtension is an extension that helps you to easily use Duration.
+This extension is inspired by the [flutter_animate](https://github.com/gskinner/flutter_animate/blob/main/lib/src/extensions/num_duration_extensions.dart) package.
+
+```dart
+  final Duration 1Microseconds = 1.microseconds;
+  final Duration 1Ms = 1.ms;
+  final Duration 1Milliseconds = 1.milliseconds;
+  final Duration 1Second = 1.seconds;
+  final Duration 1Minute = 1.minutes;
+  final Duration 1Hour = 1.hours;
+  final Duration 1Day = 1.days;
+```
+
+### **ContextThemeExtension**
+
+ContextThemeExtension is an extension that helps you to easily use ThemeData, TextTheme, and ColorScheme.
+
+```dart
+  final ThemeData theme = context.theme;
+  final TextTheme textTheme = context.textTheme;
+  final ColorScheme colorScheme = context.colorScheme;
+```
+
+### **ContextMediaQueryExtension**
+
+ContextMediaQueryExtension is an extension that helps you to easily use MediaQuery.
+
+```dart
+  final MediaQueryData mediaQuery = context.mediaQuery;
+  final Size appSize = context.appSize;
+  final double width = context.width;
+  final double height = context.height;
+  final EdgeInsets padding = context.padding;
+  final Brightness brightness = context.brightness;
+  final Orientation orientation = context.orientation;
 ```
