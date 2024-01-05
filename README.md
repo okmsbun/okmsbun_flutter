@@ -114,6 +114,12 @@ This widget returns an empty appBar, which only has a background color and no ot
   }
 ```
 
+<img width="382" alt="Screenshot 2024-01-05 at 17 12 51" src="https://github.com/okmsbun/okmsbun_flutter/assets/49310621/1188311d-51d6-48d1-8e1e-0d8668d19a9c"> Black Background
+
+<img width="373" alt="Screenshot 2024-01-05 at 17 13 37" src="https://github.com/okmsbun/okmsbun_flutter/assets/49310621/f0364033-fcaa-4838-a05d-49b1ad4d40de"> White Background
+
+Only when the background color is changed, the text and icon colors in the 'statusBar' change automatically.
+
 ### **EstimatedAppBarContainer**
 
 'EstimatedAppBar' is a 'PreferredSizeWidget'. If you want to make your own 'PreferredSizeWidget' you can use 'EstimatedAppBarContainer'.
