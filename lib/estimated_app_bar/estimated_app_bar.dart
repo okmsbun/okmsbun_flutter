@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class EstimatedAppBarContainer extends StatelessWidget {
-  const EstimatedAppBarContainer({required this.backgroundColor, required this.child});
+  const EstimatedAppBarContainer({
+    required this.backgroundColor,
+    required this.child,
+  });
 
   final Color backgroundColor;
   final Widget child;
@@ -10,7 +13,10 @@ class EstimatedAppBarContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      _overlayBrightness(ThemeData.estimateBrightnessForColor(backgroundColor), backgroundColor),
+      _overlayBrightness(
+        ThemeData.estimateBrightnessForColor(backgroundColor),
+        backgroundColor,
+      ),
     );
 
     return Container(
@@ -20,9 +26,13 @@ class EstimatedAppBarContainer extends StatelessWidget {
     );
   }
 
-  SystemUiOverlayStyle _overlayBrightness(Brightness brightness, Color? backgroundColor) {
-    final SystemUiOverlayStyle style =
-        brightness == Brightness.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark;
+  SystemUiOverlayStyle _overlayBrightness(
+    Brightness brightness,
+    Color? backgroundColor,
+  ) {
+    final SystemUiOverlayStyle style = brightness == Brightness.dark
+        ? SystemUiOverlayStyle.light
+        : SystemUiOverlayStyle.dark;
     return SystemUiOverlayStyle(
       statusBarColor: backgroundColor,
       statusBarBrightness: style.statusBarBrightness,
