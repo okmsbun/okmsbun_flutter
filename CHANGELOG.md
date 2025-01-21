@@ -34,3 +34,7 @@
 ## 0.0.14
 
 Refactor EstimatedAppBarContainer for improved readability; update version to 0.0.14; remove unused VSCode settings
+
+## 0.0.15
+
+Enhance documentation and linting rules.
