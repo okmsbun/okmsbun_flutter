@@ -44,7 +44,7 @@ And the following line to your package's `pubspec.yaml` file:
 ```yaml
 ....
 dev_dependencies:
-  flutter_lints: ^3.0.1
+  flutter_lints: latest
 ....
 ```
 

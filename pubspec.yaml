@@ -1,25 +1,23 @@
 name: okmsbun_flutter
 description: "Package util package that aims to get rid of boilerplate to start the project quickly"
-version: 0.0.12
+version: 0.0.13
 repository: https://github.com/okmsbun/okmsbun_flutter
 
 environment:
-  sdk: ">=3.2.3 <4.0.0"
-  flutter: ">=3.10.0"
+  sdk: ^3.6.1
+  flutter: 3.27.2
 
 dependencies:
-  cached_network_image: ^3.3.1
-  dio: ^5.4.0
+  cached_network_image: ^3.4.1
+  dio: ^5.7.0
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-
-flutter:
 
 platforms:
   android:
