@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// A widget that wraps a [child] with a [Container] that has a background color
+/// and a top margin that matches the height of the system status bar.
+/// The [backgroundColor] is used as the background color of the app bar.
 class EstimatedAppBarContainer extends StatelessWidget {
+  /// Creates a widget that wraps a [child] with a [Container] that has a
+  /// background color and a top margin that matches the height of the system
+  /// status bar.
   const EstimatedAppBarContainer({
     required this.backgroundColor,
     required this.child,
   });
 
+  /// The background color of the app bar.
   final Color backgroundColor;
+
+  /// The widget below this widget in the tree.
   final Widget child;
 
   @override
@@ -42,10 +51,19 @@ class EstimatedAppBarContainer extends StatelessWidget {
   }
 }
 
+/// A widget that wraps a [child] with a [Container] that has a background color
+/// and a top margin that matches the height of the system status bar.
+/// The [backgroundColor] is used as the background color of the app bar.
 class EstimatedAppBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a widget that wraps a [child] with a [Container] that has a
+  /// background color and a top margin that matches the height of the system
+  /// status bar.
   const EstimatedAppBar({required this.backgroundColor, required this.child});
 
+  /// The background color of the app bar.
   final Color backgroundColor;
+
+  /// The widget below this widget in the tree.
   final Widget child;
 
   @override

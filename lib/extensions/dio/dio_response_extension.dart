@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 
+/// Extension on [Response] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [Response] object to a [Map] object.
 extension DioResponseExtension on Response {
+  /// Converts the [Response] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'data': data,
         'requestOptions': requestOptions.toMap,
@@ -13,7 +17,12 @@ extension DioResponseExtension on Response {
       };
 }
 
+/// Extension on [RequestOptions] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [RequestOptions] object to a [Map] object.
+
 extension RequestOptionExtension on RequestOptions {
+  /// Converts the [RequestOptions] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'method': method,
         'sendTimeout': sendTimeout?.inMilliseconds,
@@ -41,7 +50,11 @@ extension RequestOptionExtension on RequestOptions {
       };
 }
 
+/// Extension on [RedirectRecord] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [RedirectRecord] object to a [Map] object.
 extension RedirectRecordExtension on RedirectRecord {
+  /// Converts the [RedirectRecord] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'statusCode': statusCode,
         'method': method,
@@ -49,14 +62,22 @@ extension RedirectRecordExtension on RedirectRecord {
       };
 }
 
+/// Extension on [Headers] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [Headers] object to a [Map] object.
 extension HeadersExtension on Headers {
+  /// Converts the [Headers] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'preserveHeaderCase': preserveHeaderCase,
         'map': map,
       };
 }
 
+/// Extension on [CancelToken] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [CancelToken] object to a [Map] object.
 extension CancelTokenExtension on CancelToken {
+  /// Converts the [CancelToken] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'cancelError': cancelError?.toMap,
         'isCancelled': isCancelled,
@@ -64,7 +85,11 @@ extension CancelTokenExtension on CancelToken {
       };
 }
 
+/// Extension on [DioException] to convert it to a map.
+/// This is useful for logging and debugging purposes.
+/// It converts the [DioException] object to a [Map] object.
 extension DioExceptionExtension on DioException {
+  /// Converts the [DioException] object to a [Map] object.
   Map<String, dynamic> get toMap => {
         'requestOptions': requestOptions.toMap,
         'response': response?.toMap,

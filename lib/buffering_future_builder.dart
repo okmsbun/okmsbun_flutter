@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// A widget that builds itself based on the latest snapshot of interaction with
+///  a [Future].
 class BufferingFutureBuilder<T> extends StatelessWidget {
+  /// Creates a new [BufferingFutureBuilder] that builds itself based on the
   const BufferingFutureBuilder({
     required this.future,
     this.progress = const CircularProgressIndicator(),
@@ -10,11 +13,22 @@ class BufferingFutureBuilder<T> extends StatelessWidget {
     this.onLoadedData,
   });
 
+  /// The asynchronous computation to which this builder is currently connected.
   final Future<T> Function() future;
+
+  /// Widget to display when the future is loading.
   final Widget progress;
+
+  /// Widget to display when the future has thrown an error.
   final Widget errorWidget;
+
+  /// Widget to display when the future has no data.
   final Widget notFoundWidget;
+
+  /// Widget to display when the future has data.
   final Widget Function(T? data) builder;
+
+  /// Callback to be called when the future has data.
   final T? onLoadedData;
 
   Future<T> get _futureFunction => future();

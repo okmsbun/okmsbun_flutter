@@ -52,7 +52,8 @@ class _ImageNetworkWidget extends StatelessWidget {
               (defaultPlaceholder != null ? (_) => defaultPlaceholder! : null),
           height: height,
           width: width,
-          colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+          colorFilter:
+              color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
         );
       case ImageType.other:
         final TargetPlatform platform = Theme.of(context).platform;

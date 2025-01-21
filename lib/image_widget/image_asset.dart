@@ -49,7 +49,8 @@ class _ImageAssetWidget extends StatelessWidget {
               (defaultPlaceholder != null ? (_) => defaultPlaceholder! : null),
           height: height,
           width: width,
-          colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+          colorFilter:
+              color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
           alignment: alignment,
         );
       case ImageType.other:

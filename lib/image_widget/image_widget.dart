@@ -11,6 +11,10 @@ part 'image_enums.dart';
 part 'image_memory.dart';
 part 'image_network.dart';
 
+/// The `ImageWidget` class is a widget
+/// that displays an image from a network URL, asset path, or bytes.
+/// The widget supports displaying images of type `png`, `jpg`, `jpeg`, and `svg`.
+/// The widget also supports customizing the image's box fit, placeholder, error, height, width, and fade in/out animations.
 final class ImageWidget extends StatelessWidget {
   const ImageWidget._({
     required this.imageOrigin,
@@ -141,27 +145,57 @@ final class ImageWidget extends StatelessWidget {
     );
   }
 
+  /// The `imageOrigin` property is the origin of the image being displayed.
   final ImageOrigin imageOrigin;
+
+  /// The `imageType` property is the type of image being displayed.
   final ImageType? imageType;
+
+  /// The `imageAddress` property is the path to the image being displayed.
   final String? imageAddress;
+
+  /// The `boxFit` property is the fit of the image within the widget.
   final BoxFit boxFit;
+
+  /// The `httpHeaders` property is the headers for the network request.
   final Map<String, String>? httpHeaders;
+
+  /// The `placeholderBuilder` property is the builder for the placeholder widget.
   final Widget Function(BuildContext)? placeholderBuilder;
+
+  /// The `height` property is the height of the image widget.
   final double? height;
+
+  /// The `width` property is the width of the image widget.
   final double? width;
+
+  /// The `bytes` property is the bytes of the image being displayed.
   final Uint8List? bytes;
+
+  /// The `alignment` property is the alignment of the image within the widget.
   final Alignment alignment;
 
+  /// The `errorBuilder` property is the builder for the error widget.
   //! It does not support all image types. It doesn't make any mistakes.
   final Widget Function(BuildContext)? errorBuilder;
+
+  /// The `fadeInDuration` property is the duration of the fade in animation.
   //! It does not support all image types. It doesn't make any mistakes.
   final Duration fadeInDuration;
+
+  /// The `fadeOutDuration` property is the duration of the fade out animation.
   //! It does not support all image types. It doesn't make any mistakes.
   final Duration fadeOutDuration;
+
+  /// The `fadeInCurve` property is the curve of the fade in animation.
   //! It does not support all image types. It doesn't make any mistakes.
   final Curve fadeInCurve;
+
+  /// The `fadeOutCurve` property is the curve of the fade out animation.
   //! It does not support all image types. It doesn't make any mistakes.
   final Curve fadeOutCurve;
+
+  /// The `color` property is the color of the image.
   //! It does not support all image types. It doesn't make any mistakes.
   final Color? color;
 
@@ -176,7 +210,10 @@ final class ImageWidget extends StatelessWidget {
 
     switch (imageOrigin) {
       case ImageOrigin.network:
-        assert(imageAddress != null && imageType != null, 'Image address and type must not be nul');
+        assert(
+          imageAddress != null && imageType != null,
+          'Image address and type must not be nul',
+        );
         return _ImageNetworkWidget(
           imageUrl: imageAddress!,
           imageType: imageType!,
@@ -196,7 +233,10 @@ final class ImageWidget extends StatelessWidget {
           alignment: alignment,
         );
       case ImageOrigin.asset:
-        assert(imageAddress != null && imageType != null, 'Image address and type must not be nul');
+        assert(
+          imageAddress != null && imageType != null,
+          'Image address and type must not be nul',
+        );
         return _ImageAssetWidget(
           assetPath: imageAddress!,
           imageType: imageType!,
