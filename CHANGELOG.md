@@ -4,7 +4,7 @@
 
 * TODO: Describe initial release.
 
-## 0.0.13 - 2025-01-21
+## 0.0.13
 
 ### Additions and Changes
 
@@ -30,3 +30,7 @@
 ### Important Reminder
 - When upgrading, note that the new `alignment` parameter may simplify how you position images. If you were previously using another widget just for alignment, you can now take advantage of the built-in `alignment`.
 - Check for any breaking changes in packages like `dio` or `cached_network_image`. Use `dart pub outdated` and `dart pub upgrade` to verify compatibility before fully adopting this version.
+
+## 0.0.14
+
+Refactor EstimatedAppBarContainer for improved readability; update version to 0.0.14; remove unused VSCode settings
