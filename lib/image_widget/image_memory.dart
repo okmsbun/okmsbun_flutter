@@ -14,6 +14,7 @@ class _ImageMemoryWidget extends StatelessWidget {
     required this.fadeOutDuration,
     required this.fadeInCurve,
     required this.fadeOutCurve,
+    required this.alignment,
   });
 
   final Uint8List bytes;
@@ -28,6 +29,7 @@ class _ImageMemoryWidget extends StatelessWidget {
   final Duration fadeOutDuration;
   final Curve fadeInCurve;
   final Curve fadeOutCurve;
+  final Alignment alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class _ImageMemoryWidget extends StatelessWidget {
       fadeOutDuration: fadeOutDuration,
       fadeInCurve: fadeInCurve,
       fadeOutCurve: fadeOutCurve,
+      alignment: alignment,
     );
   }
 }

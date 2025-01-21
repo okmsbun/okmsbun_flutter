@@ -1,4 +1,4 @@
-library image_widget;
+library;
 
 import 'dart:typed_data';
 
@@ -12,6 +12,25 @@ part 'image_memory.dart';
 part 'image_network.dart';
 
 final class ImageWidget extends StatelessWidget {
+  const ImageWidget._({
+    required this.imageOrigin,
+    this.imageType,
+    this.imageAddress,
+    this.boxFit = BoxFit.cover,
+    this.httpHeaders,
+    this.placeholderBuilder,
+    this.errorBuilder,
+    this.height,
+    this.width,
+    this.bytes,
+    required this.fadeInDuration,
+    required this.fadeOutDuration,
+    required this.fadeInCurve,
+    required this.fadeOutCurve,
+    this.color,
+    this.alignment = Alignment.center,
+  });
+
   /// The `ImageWidget.bytes` factory method creates an `ImageWidget` instance with the provided path,
   /// bytes, box fit, placeholder builder, error builder, height, and width.
   ///
@@ -28,6 +47,7 @@ final class ImageWidget extends StatelessWidget {
     Duration fadeOutDuration = _defaultFadeOutDuration,
     Curve fadeInCurve = Curves.easeIn,
     Curve fadeOutCurve = Curves.easeOut,
+    Alignment alignment = Alignment.center,
   }) {
     return ImageWidget._(
       imageOrigin: ImageOrigin.memory,
@@ -41,6 +61,7 @@ final class ImageWidget extends StatelessWidget {
       fadeOutDuration: fadeOutDuration,
       fadeInCurve: fadeInCurve,
       fadeOutCurve: fadeOutCurve,
+      alignment: alignment,
     );
   }
 
@@ -61,6 +82,7 @@ final class ImageWidget extends StatelessWidget {
     Curve fadeInCurve = Curves.easeIn,
     Curve fadeOutCurve = Curves.easeOut,
     Color? color,
+    Alignment alignment = Alignment.center,
   }) {
     return ImageWidget._(
       imageOrigin: ImageOrigin.asset,
@@ -76,26 +98,9 @@ final class ImageWidget extends StatelessWidget {
       fadeInCurve: fadeInCurve,
       fadeOutCurve: fadeOutCurve,
       color: color,
+      alignment: alignment,
     );
   }
-
-  const ImageWidget._({
-    required this.imageOrigin,
-    this.imageType,
-    this.imageAddress,
-    this.boxFit = BoxFit.cover,
-    this.httpHeaders,
-    this.placeholderBuilder,
-    this.errorBuilder,
-    this.height,
-    this.width,
-    this.bytes,
-    required this.fadeInDuration,
-    required this.fadeOutDuration,
-    required this.fadeInCurve,
-    required this.fadeOutCurve,
-    this.color,
-  });
 
   /// The `ImageWidget.network` factory method creates an `ImageWidget` instance for displaying an image
   /// from a network URL, with optional customization options.
@@ -115,6 +120,7 @@ final class ImageWidget extends StatelessWidget {
     Curve fadeInCurve = Curves.easeIn,
     Curve fadeOutCurve = Curves.easeOut,
     Color? color,
+    Alignment alignment = Alignment.center,
   }) {
     return ImageWidget._(
       imageOrigin: ImageOrigin.network,
@@ -131,6 +137,7 @@ final class ImageWidget extends StatelessWidget {
       fadeInCurve: fadeInCurve,
       fadeOutCurve: fadeOutCurve,
       color: color,
+      alignment: alignment,
     );
   }
 
@@ -143,6 +150,8 @@ final class ImageWidget extends StatelessWidget {
   final double? height;
   final double? width;
   final Uint8List? bytes;
+  final Alignment alignment;
+
   //! It does not support all image types. It doesn't make any mistakes.
   final Widget Function(BuildContext)? errorBuilder;
   //! It does not support all image types. It doesn't make any mistakes.
@@ -164,7 +173,6 @@ final class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageAddress?.isEmpty ?? false) return const SizedBox.shrink();
-    // TODO: "cached_network_image" does not support all platforms. Check it.
 
     switch (imageOrigin) {
       case ImageOrigin.network:
@@ -185,6 +193,7 @@ final class ImageWidget extends StatelessWidget {
           fadeInCurve: fadeInCurve,
           fadeOutCurve: fadeOutCurve,
           color: color,
+          alignment: alignment,
         );
       case ImageOrigin.asset:
         assert(imageAddress != null && imageType != null, 'Image address and type must not be nul');
@@ -203,6 +212,7 @@ final class ImageWidget extends StatelessWidget {
           fadeInCurve: fadeInCurve,
           fadeOutCurve: fadeOutCurve,
           color: color,
+          alignment: alignment,
         );
       case ImageOrigin.memory:
         assert(bytes != null, 'Bytes must not be null');
@@ -219,6 +229,7 @@ final class ImageWidget extends StatelessWidget {
           fadeOutDuration: fadeOutDuration,
           fadeInCurve: fadeInCurve,
           fadeOutCurve: fadeOutCurve,
+          alignment: alignment,
         );
     }
   }

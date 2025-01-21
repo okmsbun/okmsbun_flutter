@@ -17,6 +17,7 @@ class _ImageNetworkWidget extends StatelessWidget {
     required this.fadeInCurve,
     required this.fadeOutCurve,
     required this.color,
+    required this.alignment,
   });
 
   final String imageUrl;
@@ -34,6 +35,7 @@ class _ImageNetworkWidget extends StatelessWidget {
   final Curve fadeInCurve;
   final Curve fadeOutCurve;
   final Color? color;
+  final Alignment alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,7 @@ class _ImageNetworkWidget extends StatelessWidget {
                 fadeOutDuration: fadeOutDuration,
                 fadeInCurve: fadeInCurve,
                 fadeOutCurve: fadeOutCurve,
+                alignment: alignment,
               )
             : FadeInImage(
                 image: NetworkImage(imageUrl, headers: httpHeaders),
@@ -100,6 +103,7 @@ class _ImageNetworkWidget extends StatelessWidget {
                 fadeOutDuration: fadeOutDuration,
                 fadeInCurve: fadeInCurve,
                 fadeOutCurve: fadeOutCurve,
+                alignment: alignment,
               );
     }
   }

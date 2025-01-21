@@ -16,6 +16,7 @@ class _ImageAssetWidget extends StatelessWidget {
     required this.fadeInCurve,
     required this.fadeOutCurve,
     required this.color,
+    required this.alignment,
   });
 
   final String assetPath;
@@ -32,6 +33,7 @@ class _ImageAssetWidget extends StatelessWidget {
   final Curve fadeInCurve;
   final Curve fadeOutCurve;
   final Color? color;
+  final Alignment alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class _ImageAssetWidget extends StatelessWidget {
           height: height,
           width: width,
           colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+          alignment: alignment,
         );
       case ImageType.other:
         return FadeInImage(
@@ -70,6 +73,7 @@ class _ImageAssetWidget extends StatelessWidget {
           fadeOutDuration: fadeOutDuration,
           fadeInCurve: fadeInCurve,
           fadeOutCurve: fadeOutCurve,
+          alignment: alignment,
         );
     }
   }
