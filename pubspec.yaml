@@ -5,7 +5,7 @@ repository: https://github.com/okmsbun/okmsbun_flutter
 
 environment:
   sdk: ^3.6.1
-  flutter: 3.27.2
+  flutter: ">=3.27.2"
 
 dependencies:
   cached_network_image: ^3.4.1
